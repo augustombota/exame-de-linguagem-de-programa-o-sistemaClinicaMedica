@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox prefHeight="650.0" prefWidth="1000.0" spacing="15" style="-fx-background-color: #f8fafc;"
+      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.clinica.controller.AdminController">
+
+    <padding>
+        <Insets top="15" right="15" bottom="15" left="15"/>
+    </padding>
+
+    <HBox spacing="15" alignment="CENTER_LEFT" style="-fx-background-color: #1e293b; -fx-padding: 12px; -fx-background-radius: 6px;">
+        <Label text="⚙️ PAINEL ADMINISTRATIVO" style="-fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label fx:id="lblAdminLogado" text="Admin: Ativo" style="-fx-text-fill: #94a3b8;"/>
+        <Button text="👈 CLINICA" onAction="#handleIrParaSistema" style="-fx-background-color: #22c55e; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;"/>
+        <Button text="Sair" onAction="#handleLogout" style="-fx-background-color: #ef4444; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;"/>
+    </HBox>
+
+    <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+        <tabs>
+            <Tab text="👨‍⚕️ Gerenciamento de Médicos">
+                <HBox spacing="15" style="-fx-padding: 10px;">
+                    <VBox spacing="8" prefWidth="320.0" style="-fx-background-color: white; -fx-padding: 15px; -fx-background-radius: 6px; -fx-border-color: #e2e8f0;">
+                        <Label text="Formulário do Médico" style="-fx-font-weight: bold; -fx-font-size: 13px; -fx-text-fill: #0f172a;"/>
+                        <Separator/>
+
+                        <Label text="ID Médico (Automático):"/>
+                        <TextField fx:id="txtIdMedico" editable="false" disable="true" style="-fx-background-color: #f1f5f9;"/>
+
+                        <Label text="Nome Completo: *"/>
+                        <TextField fx:id="txtNomeMedico"/>
+
+                        <Label text="CRM / Carteira Profissional: *"/>
+                        <TextField fx:id="txtCrmMedico"/>
+
+                        <Label text="Especialidade Clínica: *"/>
+                        <TextField fx:id="txtEspecialidade"/>
+
+                        <Label text="Telefone de Contato:"/>
+                        <TextField fx:id="txtTelefoneMedico"/>
+
+                        <Region VBox.vgrow="ALWAYS"/>
+                        <HBox spacing="8" alignment="CENTER_RIGHT">
+                            <Button text="Limpar" onAction="#handleLimparCamposMedico" style="-fx-background-color: #64748b; -fx-text-fill: white;"/>
+                            <Button text="Excluir" onAction="#handleExcluirMedico" style="-fx-background-color: #ef4444; -fx-text-fill: white;"/>
+                            <Button text="Salvar" onAction="#handleSalvarMedico" style="-fx-background-color: #22c55e; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                        </HBox>
+                    </VBox>
+
+                    <TableView fx:id="tblMedicos" HBox.hgrow="ALWAYS" onMouseClicked="#handleCarregarFormularioMedico">
+                        <columns>
+                            <TableColumn fx:id="colMedId" text="ID" prefWidth="50"/>
+                            <TableColumn fx:id="colMedNome" text="Nome do Médico" prefWidth="220"/>
+                            <TableColumn fx:id="colMedCrm" text="CRM" prefWidth="130"/>
+                            <TableColumn fx:id="colMedEspec" text="Especialidade" prefWidth="150"/>
+                            <TableColumn fx:id="colMedTelefone" text="Telefone" prefWidth="110"/>
+                        </columns>
+                    </TableView>
+                </HBox>
+            </Tab>
+
+            <Tab text="🔑 Usuários e Credenciais do Sistema">
+                <HBox spacing="15" style="-fx-padding: 10px;">
+                    <VBox spacing="8" prefWidth="320.0" style="-fx-background-color: white; -fx-padding: 15px; -fx-background-radius: 6px; -fx-border-color: #e2e8f0;">
+                        <Label text="Controle de Acesso" style="-fx-font-weight: bold; -fx-font-size: 13px; -fx-text-fill: #0f172a;"/>
+                        <Separator/>
+
+                        <Label text="ID Usuário:"/>
+                        <TextField fx:id="txtIdUsuario" editable="false" disable="true" style="-fx-background-color: #f1f5f9;"/>
+
+                        <Label text="Nome de Exibição: *"/>
+                        <TextField fx:id="txtNomeUsuario" promptText="Ex: Receção Central"/>
+
+                        <Label text="Login de Acesso (Único): *"/>
+                        <TextField fx:id="txtLoginUsuario" promptText="usuario.login"/>
+
+                        <Label text="Senha de Acesso: *"/>
+                        <PasswordField fx:id="txtSenhaUsuario"/>
+
+                        <Label text="Perfil de Permissão: *"/>
+                        <ComboBox fx:id="cbPerfilUsuario" prefWidth="300.0"/>
+
+                        <Region VBox.vgrow="ALWAYS"/>
+                        <HBox spacing="8" alignment="CENTER_RIGHT">
+                            <Button text="Limpar" onAction="#handleLimparCamposUsuario" style="-fx-background-color: #64748b; -fx-text-fill: white;"/>
+                            <Button text="Excluir" onAction="#handleExcluirUsuario" style="-fx-background-color: #ef4444; -fx-text-fill: white;"/>
+                            <Button text="Salvar" onAction="#handleSalvarUsuario" style="-fx-background-color: #22c55e; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                        </HBox>
+                    </VBox>
+
+                    <TableView fx:id="tblUsuarios" HBox.hgrow="ALWAYS" onMouseClicked="#handleCarregarFormularioUsuario">
+                        <columns>
+                            <TableColumn fx:id="colUsrId" text="ID" prefWidth="60"/>
+                            <TableColumn fx:id="colUsrNome" text="Nome do Usuário" prefWidth="250"/>
+                            <TableColumn fx:id="colUsrLogin" text="Login" prefWidth="150"/>
+                            <TableColumn fx:id="colUsrPerfil" text="Perfil / Nível" prefWidth="150"/>
+                        </columns>
+                    </TableView>
+                </HBox>
+            </Tab>
+        </tabs>
+    </TabPane>
+</VBox>

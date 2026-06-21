@@ -1,0 +1,174 @@
+/* Paleta de Cores de Referência:
+   - Azul Bebé Principal: #e0f2fe
+   - Azul Médio/Suave:    #0ea5e9
+   - Laranja Destaque:    #f97316
+   - Laranja Hover:       #ea580c
+   - Escuro Texto:        #1e293b
+*/
+
+/* Estilo Geral da Janela de Fundo */
+.root {
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-text-fill: #1e293b;
+}
+
+/* Painel de Login e Fundos Principais */
+.login-bg {
+    -fx-background-color: linear-gradient(to bottom right, #ffffff, #e0f2fe);
+}
+
+.main-bg {
+    -fx-background-color: #f8fafc;
+}
+
+/* Títulos e Rótulos */
+.title-label {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #f97316; /* Laranja pro Destaque */
+}
+
+.subtitle-label {
+    -fx-font-size: 13px;
+    -fx-text-fill: #64748b;
+}
+
+.field-label {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #334155;
+}
+
+/* Campos de Texto (Input) */
+.text-field, .password-field {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cbd5e1;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 8px 12px;
+    -fx-font-size: 13px;
+    -fx-text-fill: #1e293b;
+}
+
+.text-field:focused, .password-field:focused {
+    -fx-border-color: #f97316; /* Realce em Laranja ao focar */
+    -fx-background-color: #fafafa;
+}
+
+/* Botões Profissionais */
+.btn-primary {
+    -fx-background-color: #f97316; /* Laranja */
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 10px 20px;
+    -fx-cursor: hand;
+}
+
+.btn-primary:hover {
+    -fx-background-color: #ea580c; /* Laranja mais escuro no hover */
+}
+
+.btn-logout {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ef4444;
+    -fx-border-color: #ef4444;
+    -fx-border-radius: 4px;
+    -fx-font-size: 12px;
+    -fx-cursor: hand;
+}
+
+.btn-logout:hover {
+    -fx-background-color: #ef4444;
+    -fx-text-fill: #ffffff;
+}
+
+/* Barra de Status Superior */
+.top-bar {
+    -fx-background-color: #e0f2fe; /* Azul Bebé de fundo */
+    -fx-border-color: #bae6fd;
+    -fx-border-width: 0 0 1px 0;
+    -fx-padding: 12px;
+}
+
+.top-bar-label {
+    -fx-text-fill: #0369a1; /* Azul escuro contratante para ler bem */
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+}
+
+/* Estilização das Abas (TabPane) */
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: #f1f5f9;
+}
+
+.tab {
+    -fx-background-color: #e2e8f0;
+    -fx-background-radius: 4px 4px 0 0;
+    -fx-padding: 8px 16px;
+}
+
+.tab:hover {
+    -fx-background-color: #cbd5e1;
+}
+
+.tab:selected {
+    -fx-background-color: #f97316; /* Aba selecionada brilha em Laranja */
+}
+
+.tab:selected .tab-label {
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
+
+/* ==========================================================================
+   ESTILIZAÇÃO PROFISSIONAL DOS BOTÕES DE FILTRO (PACIENTES)
+   ========================================================================== */
+
+/* Estilo Base dos Botões de Filtro */
+.button-filtro {
+    -fx-background-color: #87CEEB; /* Lindo Azul-Bebé do Sistema */
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+
+    /* Cantos arredondados modernos e elegantes */
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-border-color: transparent;
+
+    /* Espaçamento interno confortável */
+    -fx-padding: 8px 18px;
+    -fx-cursor: hand;
+
+    /* Sombra interna/externa subtil para dar profundidade */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.08), 4, 0, 0, 2);
+}
+
+/* Estado Hover: Quando o utilizador passa o rato por cima */
+.button-filtro:hover {
+    -fx-background-color: #f97316; /* Transita para o Laranja vibrante da Clínica */
+    -fx-text-fill: #ffffff;
+    -fx-border-color: transparent;
+
+    /* Efeito de elevação leve com a sombra */
+    -fx-effect: dropshadow(three-pass-box, rgba(249, 115, 22, 0.3), 8, 0, 0, 3);
+}
+
+/* Estado Armed / Pressed: Quando o botão é clicado */
+.button-filtro:armed {
+    -fx-background-color: #ea580c; /* Laranja um pouco mais escuro para indicar o clique */
+    -fx-scale-x: 0.96;             /* Efeito "click" físico de encolher ligeiramente */
+    -fx-scale-y: 0.96;
+    -fx-effect: none;
+}
+
+/* Estado Focus: Quando o botão é selecionado via teclado (Acessibilidade) */
+.button-filtro:focused {
+    -fx-border-color: #38bdf8; /* Borda externa fina em azul brilhante */
+    -fx-border-width: 1.5px;
+}

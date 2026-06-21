@@ -1,0 +1,29 @@
+/* Estilo Geral do Contentor do Relatório */
+.text-area-relatorio {
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    -fx-font-size: 13px;
+    -fx-text-fill: #2c3e50;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #dcdde1;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-padding: 15px;
+}
+
+/* Customização dos Alertas e Diálogos de Relatório */
+.dialog-pane {
+    -fx-background-color: #f8f9fa;
+}
+
+.dialog-pane .label {
+    -fx-text-fill: #2c3e50;
+    -fx-font-weight: bold;
+}
+
+.dialog-pane:header .header-panel {
+    -fx-background-color: #34495e;
+}
+
+.dialog-pane:header .header-panel .label {
+    -fx-text-fill: #ffffff;
+}

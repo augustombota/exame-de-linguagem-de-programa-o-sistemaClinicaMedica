@@ -1,0 +1,56 @@
+/* Cores do Módulo: Laranja de Ação (#f97316) e Azul Bebé de Suporte (#e0f2fe) */
+
+.form-container {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cbd5e1;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-padding: 20px;
+}
+
+/* Tabela de Dados (TableView) */
+.table-view {
+    -fx-background-color: transparent;
+    -fx-border-color: #cbd5e1;
+    -fx-border-width: 1px;
+    -fx-border-radius: 6px;
+}
+
+.table-view .column-header {
+    -fx-background-color: #e0f2fe; /* Azul Bebé no topo da tabela */
+    -fx-size: 35px;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #0369a1;
+    -fx-font-weight: bold;
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: #f97316; /* Laranja no Paciente Selecionado */
+    -fx-text-fill: #ffffff;
+}
+
+/* Botões específicos do CRUD */
+.btn-save {
+    -fx-background-color: #f97316;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+.btn-save:hover { -fx-background-color: #ea580c; }
+
+.btn-clear {
+    -fx-background-color: #e2e8f0;
+    -fx-text-fill: #334155;
+    -fx-cursor: hand;
+}
+.btn-clear:hover { -fx-background-color: #cbd5e1; }
+
+.btn-delete {
+    -fx-background-color: #ef4444;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+}
+.btn-delete:hover { -fx-background-color: #dc2626; }

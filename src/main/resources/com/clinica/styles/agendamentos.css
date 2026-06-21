@@ -1,0 +1,32 @@
+
+.combo-box {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 5px;
+    -fx-padding: 4px;
+}
+
+.combo-box:focused {
+    -fx-border-color: #f97316;
+}
+
+/* Cores de Status para o Fluxo da Consulta */
+.status-agendada {
+    -fx-text-fill: #0284c7; /* Azul */
+    -fx-font-weight: bold;
+}
+
+.status-confirmada {
+    -fx-text-fill: #16a34a; /* Verde */
+    -fx-font-weight: bold;
+}
+
+.status-cancelada {
+    -fx-text-fill: #dc2626; /* Vermelho */
+    -fx-font-weight: bold;
+}
+
+.status-realizada {
+    -fx-text-fill: #475569; /* Cinza */
+    -fx-font-weight: bold;
+}

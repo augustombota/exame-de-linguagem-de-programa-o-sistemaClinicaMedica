@@ -1,0 +1,31 @@
+/* Paleta: Detalhes em Laranja (#f97316) para botões de gravação e Azul Bebé (#e0f2fe) para cabeçalhos */
+
+.medical-area {
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.text-area-clinica {
+    -fx-font-family: "Consolas", monospace;
+    -fx-font-size: 13px;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 4px;
+}
+
+.text-area-clinica:focused {
+    -fx-border-color: #f97316;
+}
+
+.label-prontuario {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e293b;
+}
+
+/* Badge de Alerta para Histórico Preliminar */
+.box-alerta-historico {
+    -fx-background-color: #fff7ed;
+    -fx-border-color: #fed7aa;
+    -fx-border-width: 1px;
+    -fx-border-radius: 6px;
+    -fx-padding: 10px;
+}

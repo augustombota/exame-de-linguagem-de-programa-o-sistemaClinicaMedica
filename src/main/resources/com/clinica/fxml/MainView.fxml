@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import java.net.URL?>
+
+<VBox prefHeight="700.0" prefWidth="1050.0" styleClass="main-bg"
+      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.clinica.controller.MainController">
+
+
+    <HBox styleClass="top-bar" spacing="20" alignment="CENTER_RIGHT">
+        <Label fx:id="lblUsuarioLogado" text="Sessão ativa: Carregando..." styleClass="top-bar-label"/>
+
+        <Button text="🔑 Alterar senha/Modulo"
+                onAction="#handleAlterarMinhaSenha"
+                style="-fx-background-color: #0284c7; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand; -fx-background-radius: 4px;"/>
+
+        <Button text="Terminar Sessão" onAction="#handleLogout" styleClass="btn-logout"/>
+    </HBox>
+
+    <TabPane fx:id="tabPanePrincipal" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+        <tabs>
+            <Tab fx:id="tabPacientes" text="👨‍⚕️ Admissão de Pacientes">
+                <content>
+                    <HBox spacing="20">
+                        <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+                        <VBox spacing="15" prefWidth="380.0" styleClass="form-container">
+                            <Label text="Ficha do Paciente" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #f97316;"/>
+                            <TextField fx:id="txtIdPaciente" visible="false" managed="false"/>
+                            <VBox spacing="5"><Label text="Nome Completo:" styleClass="field-label"/><TextField fx:id="txtNomePaciente"/></VBox>
+                            <HBox spacing="10">
+                                <VBox spacing="5" HBox.hgrow="ALWAYS"><Label text="CPF:" styleClass="field-label"/><TextField fx:id="txtCpfPaciente"/></VBox>
+                                <VBox spacing="5" HBox.hgrow="ALWAYS"><Label text="Data de Nasc.:" styleClass="field-label"/><DatePicker fx:id="dpDataNascimento" prefWidth="180"/></VBox>
+                            </HBox>
+                            <HBox spacing="10">
+                                <VBox spacing="5" HBox.hgrow="ALWAYS"><Label text="Telefone:" styleClass="field-label"/><TextField fx:id="txtTelefonePaciente"/></VBox>
+                                <VBox spacing="5" HBox.hgrow="ALWAYS"><Label text="Endereço:" styleClass="field-label"/><TextField fx:id="txtEnderecoPaciente"/></VBox>
+                            </HBox>
+                            <VBox spacing="5" VBox.vgrow="ALWAYS"><Label text="Histórico Preliminar:" styleClass="field-label"/><TextArea fx:id="txtHistorico" prefHeight="80.0" wrapText="true"/></VBox>
+                            <HBox spacing="10" alignment="CENTER_RIGHT">
+                                <Button text="Limpar" onAction="#handleLimparCampos" styleClass="btn-clear"/>
+                                <Button text="Inativar" fx:id="btnInativar" onAction="#handleInativarPaciente" styleClass="btn-delete" disable="true"/>
+                                <Button text="Salvar Ficha" onAction="#handleSalvarPaciente" styleClass="btn-save"/>
+                            </HBox>
+                        </VBox>
+                        <VBox spacing="10" HBox.hgrow="ALWAYS">
+
+                            <HBox spacing="15" alignment="CENTER_LEFT" style="-fx-padding: 0 0 5 0;">
+                                <children>
+                                    <Label text="Filtros de Listagem:" style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                                    <Button text="Apenas Ativos" onAction="#handleMostrarPacientesAtivos" styleClass="button-filtro"/>
+                                    <Button text="Já Consultados" onAction="#handleMostrarPacientesConsultados" styleClass="button-filtro"/>
+                                </children>
+                            </HBox>
+
+                            <TableView fx:id="tblPacientes" VBox.vgrow="ALWAYS" onMouseClicked="#handleCarregarFormulario">
+                                <columns>
+                                    <TableColumn fx:id="colId" prefWidth="50.0" text="ID" />
+                                    <TableColumn fx:id="colNome" prefWidth="180.0" text="Nome" />
+                                    <TableColumn fx:id="colCpf" prefWidth="110.0" text="CPF" />
+                                    <TableColumn fx:id="colTelefone" prefWidth="100.0" text="Telefone" />
+                                    <TableColumn fx:id="colHistorico" prefWidth="150.0" text="Histórico Clínico" />
+                                </columns>
+                            </TableView>
+                        </VBox>
+                    </HBox>
+                </content>
+            </Tab>
+
+            <Tab fx:id="tabAgendamentos" text="📅 Agendamento de Consultas">
+                <content>
+                    <HBox spacing="20">
+                        <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+                        <VBox spacing="15" prefWidth="380.0" styleClass="form-container">
+                            <Label text="Marcar Nova Consulta" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #f97316;"/>
+                            <TextField fx:id="txtIdAgendamento" visible="false" managed="false"/>
+                            <VBox spacing="5"><Label text="Selecione o Paciente:" styleClass="field-label"/><ComboBox fx:id="cbPaciente" prefWidth="340.0" promptText="Escolha..."/></VBox>
+                            <VBox spacing="5"><Label text="Selecione o Médico:" styleClass="field-label"/><ComboBox fx:id="cbMedico" prefWidth="340.0" promptText="Escolha..."/></VBox>
+                            <HBox spacing="10">
+                                <VBox spacing="5" HBox.hgrow="ALWAYS"><Label text="Data da Consulta:" styleClass="field-label"/><DatePicker fx:id="dpDataConsulta" prefWidth="160.0"/></VBox>
+                                <VBox spacing="5" HBox.hgrow="ALWAYS"><Label text="Horário (HH:MM):" styleClass="field-label"/><TextField fx:id="txtHorarioConsulta"/></VBox>
+                            </HBox>
+                            <VBox spacing="5"><Label text="Status da Consulta:" styleClass="field-label"/><ComboBox fx:id="cbStatus" prefWidth="340.0"/></VBox>
+                            <HBox spacing="10" alignment="CENTER_RIGHT">
+                                <Button text="Limpar" onAction="#handleLimparAgendamento" styleClass="btn-clear"/>
+                                <Button text="Gravar Agenda" onAction="#handleSalvarAgendamento" styleClass="btn-save"/>
+                            </HBox>
+                        </VBox>
+                        <VBox spacing="10" HBox.hgrow="ALWAYS">
+                            <Label text="Agenda Geral de Consultas" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                            <TableView fx:id="tblAgendamentos" VBox.vgrow="ALWAYS" onMouseClicked="#handleCarregarAgendamento">
+                                <columns>
+                                    <TableColumn fx:id="colAgId" prefWidth="40.0" text="ID" />
+                                    <TableColumn fx:id="colAgPaciente" prefWidth="160.0" text="Paciente" />
+                                    <TableColumn fx:id="colAgMedico" prefWidth="160.0" text="Médico" />
+                                    <TableColumn fx:id="colAgData" prefWidth="100.0" text="Data" />
+                                    <TableColumn fx:id="colAgHora" prefWidth="85.0" text="Horário" />
+                                    <TableColumn fx:id="colAgStatus" prefWidth="110.0" text="Status" />
+                                </columns>
+                            </TableView>
+                        </VBox>
+                    </HBox>
+                </content>
+            </Tab>
+
+            <Tab fx:id="tabProntuarios" text="📝 Consultório &amp; Prontuários">
+                <content>
+                    <HBox spacing="20" styleClass="medical-area">
+                        <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+                        <VBox spacing="15" prefWidth="420.0" styleClass="form-container">
+                            <Label text="Evolução Clínica Digital" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #f97316;"/>
+
+                            <VBox spacing="5">
+                                <Label text="Paciente em Atendimento:" styleClass="label-prontuario"/>
+                                <ComboBox fx:id="cbProntuarioPaciente" prefWidth="400.0" promptText="Selecione o paciente..." onAction="#handleCarregarProntuarioExistente"/>
+                            </VBox>
+
+                            <VBox spacing="5" styleClass="box-alerta-historico">
+                                <Label text="⚠️ Triagem / Histórico de Alergias:" style="-fx-font-weight: bold; -fx-text-fill: #c2410c;"/>
+                                <Label fx:id="lblAlertaHistorico" text="Selecione um paciente para mapear riscos clínicos." wrapText="true" style="-fx-text-fill: #431407;"/>
+                            </VBox>
+
+                            <VBox spacing="5" VBox.vgrow="ALWAYS">
+                                <Label text="Diagnóstico Médico:" styleClass="label-prontuario"/>
+                                <TextArea fx:id="txtDiagnostico" styleClass="text-area-clinica" wrapText="true" VBox.vgrow="ALWAYS"/>
+                            </VBox>
+                        </VBox>
+
+                        <VBox spacing="15" HBox.hgrow="ALWAYS">
+                            <VBox spacing="5" styleClass="form-container" VBox.vgrow="ALWAYS">
+                                <Label text="Prescrição de Medicamentos &amp; Dosagens:" styleClass="label-prontuario"/>
+                                <TextArea fx:id="txtPrescricao" styleClass="text-area-clinica" wrapText="true" VBox.vgrow="ALWAYS"/>
+
+                                <Label text="Observações Clínicas Extra:" styleClass="label-prontuario">
+                                    <padding><Insets top="10"/></padding>
+                                </Label>
+                                <TextArea fx:id="txtObservacoes" styleClass="text-area-clinica" wrapText="true" prefHeight="100.0"/>
+                            </VBox>
+
+                            <HBox spacing="12" alignment="CENTER_RIGHT" styleClass="form-container" style="-fx-padding: 12px;">
+                                <Button text="📄 Gerar Relatório (PDF / Impressão)" onAction="#handleEmitirRelatorioPDF" style="-fx-background-color: #0284c7; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand; -fx-padding: 8px 15px; -fx-background-radius: 4px;"/>
+                                <Button text="💾 Gravar no Prontuário" onAction="#handleSalvarProntuario" styleClass="btn-save" prefWidth="200.0"/>
+                            </HBox>
+                        </VBox>
+                    </HBox>
+                </content>
+            </Tab>
+        </tabs>
+    </TabPane>
+</VBox>
