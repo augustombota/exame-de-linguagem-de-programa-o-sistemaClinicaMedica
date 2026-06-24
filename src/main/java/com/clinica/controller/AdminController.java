@@ -50,7 +50,7 @@ public class AdminController {
     private final ObservableList<Medico> obsMedicos = FXCollections.observableArrayList();
     private final ObservableList<Usuario> obsUsuarios = FXCollections.observableArrayList();
 
-    // 🔐 ALGORITMO DE CRIPTOGRAFIA MD5 NATIVO
+    //  ALGORITMO DE CRIPTOGRAFIA MD5 NATIVO
     private String criptografarMD5(String senha) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
